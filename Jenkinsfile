@@ -39,6 +39,7 @@ pipeline {
                     sh 'docker push 510314780674.dkr.ecr.us-east-1.amazonaws.com/geolocation_ecr_rep:$BUILD_NUMBER'
                 }
             }
+        }
             //deploy the image that is in ECR to our EKS cluster
         stage ("Kube Deploy") {
             steps {
@@ -48,5 +49,4 @@ pipeline {
             }
         }
     }
-}
 }
