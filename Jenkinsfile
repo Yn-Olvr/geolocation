@@ -44,9 +44,8 @@ pipeline {
         stage ("Kube Deploy") {
             steps {
                 withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'eks_credential', namespace: '', serverUrl: '') {
-                    dir('/var/lib/jenkins/workspace/geolocation'){
-                 sh "kubectl apply -f eks-deploy-from-ecr.yaml"
-                }
+                 sh "kubectl apply -f eks_deploy_from_ecr.yaml"
+                
                 }
             }
         }
