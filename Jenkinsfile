@@ -41,5 +41,13 @@ pipeline {
                 }
             }
         }
+        //deploy the image that is in ECR to our EKS cluster
+        stage ("Kube Deploy") {
+            steps {
+                withKubeConfig([credentialsId: 'eks_credentials', serverUrl: '']) {
+                 sh "kubectl apply -f eks_deploy_from_ecr.yaml"
+                }
+            }
+        }
     }
 }
