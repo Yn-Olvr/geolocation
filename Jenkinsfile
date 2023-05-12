@@ -5,7 +5,7 @@ pipeline {
     }
      environment {
     registry = '510314780674.dkr.ecr.us-east-1.amazonaws.com/geolocation_ecr_rep'
-    registryCredential = 'jenkins-ecr'
+    // registryCredential = 'jenkins-ecr'
     dockerimage = ''
   }
     stages {
@@ -28,7 +28,7 @@ pipeline {
         stage('Building image') {
             steps{
                 script {
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                    dockerImage = docker.build registry
                 }
             }
         }
